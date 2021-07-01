@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity >=0.5.16;
 
 contract DappToken {
     string  public name = "DApp Token";
@@ -18,6 +18,7 @@ contract DappToken {
         uint256 _value
     );
 
+    //mapping -> key - value pair
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 

@@ -19,15 +19,15 @@ class Navbar extends Component {
   
 
   onRecieveSignin = (user) => {
-    this.setState({email : user.email});
-    this.setState({password : user.password})
+    this.setState({Email : user.email});
+    this.setState({Password : user.password})
     this.props.login(user);
   }
 
   onRecieveSignup = (user) => {
-    this.setState({email : user.email});
-    this.setState({password : user.password})
-    this.setState({key : user.key})
+    this.setState({Email : user.email});
+    this.setState({Password : user.password})
+    console.log(user);
     this.props.register(user);
   }
 
@@ -156,7 +156,7 @@ class Signin extends Component {
 
     onSubmit = (e) => {
       e.preventDefault();
-      const user = {email: this.state.email, password: this.state.password};
+      const user = {Email: this.state.email, Password: this.state.password};
       toggleSignin();
       this.props.onRecieve(user)
       this.setState({//reset to default
@@ -184,7 +184,6 @@ class Signup extends Component {
           display: 'none',
           email: '',
           password: '',
-          key: "",
           account: 0x00
       };
 
@@ -205,13 +204,12 @@ class Signup extends Component {
 
   onSubmitSignup = (e) => {
     e.preventDefault();
-    const user = {email: this.state.email, password: this.state.password, key: this.state.key};
+    const user = {Email: this.state.email, Password: this.state.password};
     toggleSignup();
     this.props.onRecieve(user)
     this.setState({//reset to default
       email: "",
-      password: "",
-      key: ""})
+      password: ""})
   }
 
   render() {
@@ -221,8 +219,6 @@ class Signup extends Component {
               <input type="email" name="email" value={this.state.email} onChange={(e) => this.handleInputChange(e)} className="email-form signin-item"/>
               <div className="password signin-item"> Password </div>
               <input type="password" name="password" value={this.state.password} onChange={(e) => this.handleInputChange(e)} className="password-form signin-item"/>
-              <div className="password signin-item"> Private Key </div>
-              <input type="text" name="key" value={this.state.key} onChange={(e) => this.handleInputChange(e)} className="key-form signin-item"/>
               <input type="submit" value ="submit" className="submit-button signin-item" onClick={(e) => this.onSubmitSignup(e)}/>
           </div>
       )
